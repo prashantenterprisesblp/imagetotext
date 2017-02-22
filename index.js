@@ -65,7 +65,7 @@ vision.detect(req.file.path, types, function(err, detections, apiResponse) {
       // Write out the JSON output of the Vision API
        //res.write(JSON.stringify(jsonObj.textAnnotations, null, 4));
       
-      res.write(texts, null, 4));
+      res.write(texts, null, 4);
 
       // Delete file (optional)
       fs.unlinkSync(req.file.path);
