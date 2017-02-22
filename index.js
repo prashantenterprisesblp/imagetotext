@@ -63,7 +63,7 @@ vision.detect(req.file.path, types, function(err, detections, apiResponse) {
       var jsonObj = JSON.parse(texts);
       //console.log("Check texts" + texts);
       // Write out the JSON output of the Vision API
-       res.write(JSON.stringify(jsonObj.responses.textAnnotations, null, 4));
+       res.write(JSON.stringify(jsonObj.textAnnotations, null, 4));
       //res.write(JSON.stringify(apiResponse, null, 4));
 
       // Delete file (optional)
