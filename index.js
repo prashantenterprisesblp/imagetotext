@@ -60,8 +60,8 @@ vision.detect(req.file.path, types, function(err, detections, apiResponse) {
 
       //var jsonOutput = JSON.parse(apiResponse);
       var texts = JSON.stringify(apiResponse.responses[0].textAnnotations[0].description);
-      texts.replace(/\n/g, "\\\\n").replace(/\r/g, "\\\\r").replace(/\t/g, "\\\\t");
-      //console.log("Check texts" + JSON.stringify(apiResponse.responses[0].textAnnotations[0].description));
+      texts = texts.replace(/\n/g, "\\\\n").replace(/\r/g, "\\\\r").replace(/\t/g, "\\\\t");
+      console.log("Check texts ::" + texts);
       // Write out the JSON output of the Vision API
        //res.write(JSON.stringify(jsonObj.textAnnotations, null, 4));
       
