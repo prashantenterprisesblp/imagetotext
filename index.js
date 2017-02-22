@@ -59,7 +59,7 @@ vision.detect(req.file.path, types, function(err, detections, apiResponse) {
       res.write('<img width=200 src="' + base64Image(req.file.path) + '"><br>');
 
       //var jsonOutput = JSON.parse(apiResponse);
-      var texts = apiResponse.textAnnotations.description;
+      var texts = JSON.stringify(apiResponse);
       console.log("Check texts" + texts);
       // Write out the JSON output of the Vision API
       res.write(JSON.stringify(apiResponse, null, 4));
