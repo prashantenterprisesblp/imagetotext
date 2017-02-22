@@ -59,12 +59,13 @@ vision.detect(req.file.path, types, function(err, detections, apiResponse) {
       res.write('<img width=200 src="' + base64Image(req.file.path) + '"><br>');
 
       //var jsonOutput = JSON.parse(apiResponse);
-      var texts = JSON.stringify(apiResponse);
-      var jsonObj = JSON.parse(texts);
+      var texts = JSON.stringify(apiResponse.responses[0].textAnnotations[0].description);
+      texts.replace(/\n/g, "\\\\n").replace(/\r/g, "\\\\r").replace(/\t/g, "\\\\t");
       //console.log("Check texts" + JSON.stringify(apiResponse.responses[0].textAnnotations[0].description));
       // Write out the JSON output of the Vision API
        //res.write(JSON.stringify(jsonObj.textAnnotations, null, 4));
-      res.write(JSON.stringify(apiResponse.responses[0].textAnnotations[0].description, null, 4));
+      
+      res.write(texts, null, 4));
 
       // Delete file (optional)
       fs.unlinkSync(req.file.path);
