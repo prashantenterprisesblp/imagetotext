@@ -62,11 +62,11 @@ vision.detect(req.file.path, types, function(err, detections, apiResponse) {
       var texts = JSON.stringify(apiResponse.responses[0].textAnnotations[0].description);
       var textsHtmlwithoutQuotes = texts.replace(/"/g, '');
       var textWithNextline = textsHtmlwithoutQuotes.replace(/\n/g, '\\n');
-      console.log("Check texts ::>>" + textsHtml);
+      console.log("Check texts ::>>" + textWithNextline);
       // Write out the JSON output of the Vision API
        //res.write(JSON.stringify(jsonObj.textAnnotations, null, 4));
       
-      res.write('<p>' + textsHtml + '</p>', null, 4);
+      res.write('<p>' + textWithNextline + '</p>', null, 4);
 
       // Delete file (optional)
       fs.unlinkSync(req.file.path);
